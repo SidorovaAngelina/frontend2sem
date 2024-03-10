@@ -1,3 +1,4 @@
+/*
 import logo from './logo.svg';
 import './App.css';
 
@@ -20,6 +21,23 @@ function App() {
       </header>
     </div>
   );
+}
+
+export default App;
+*/
+
+import React  from 'react';
+import './App.css';
+import {HelloWorld, MyFirstComponent, PictureComponent} from './HelloWorld';
+
+function App(){
+    return(
+        <div className="App">
+            <MyFirstComponent/>
+            <PictureComponent/>
+            <HelloWorld/>
+        </div>
+        );
 }
 
 export default App;
