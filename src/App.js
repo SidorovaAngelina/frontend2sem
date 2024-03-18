@@ -26,13 +26,15 @@ function App() {
 export default App;
 */
 
-import React  from 'react';
+import React,  { useState }  from 'react';
 import './App.css';
 import CharacterInfo from './for2lab';
+import InputComponent from './for3lab'
 
 function App(){
     return(
         <div className="App">
+            <InputComponent/>
             <CharacterInfo/>
         </div>
     );

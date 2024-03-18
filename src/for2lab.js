@@ -17,7 +17,7 @@ function CharacterInfo() {
     <div>
       <Container>
         <h1
-          className="mb-4 mt-2 bg-dark text-white p-2 rounded"
+          className="mb-4 mt-3 bg-dark text-white p-2 rounded"
         >
           {characterData['Полное имя']}
         </h1>
