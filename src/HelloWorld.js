@@ -1,4 +1,5 @@
 import React from 'react';
+
 const HelloWorld = () =>{
     function sayMessage(){
         alert('Have a good day!');
@@ -15,6 +16,7 @@ const MyFirstComponent = () =>{
         <div>
             <h3>Если нажать на кнопку-выведется сообщение.</h3>
             <p>Это первый простой компонент, а картинка - второй.</p>
+            <p><button type="button" class="btn btn-primary"> Primary  ♡</button></p>
         </div>
     );
 };

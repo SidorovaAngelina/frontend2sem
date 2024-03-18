@@ -28,16 +28,14 @@ export default App;
 
 import React  from 'react';
 import './App.css';
-import {HelloWorld, MyFirstComponent, PictureComponent} from './HelloWorld';
+import CharacterInfo from './for2lab';
 
 function App(){
     return(
         <div className="App">
-            <MyFirstComponent/>
-            <PictureComponent/>
-            <HelloWorld/>
+            <CharacterInfo/>
         </div>
-        );
+    );
 }
 
 export default App;
