@@ -17,7 +17,7 @@ function InputComponent() {
 
   return (
     <Container>
-      <Row className="mb-3 mt-3">
+      <Row className="mb-3 mt-4">
         <Col>
             <FormControl
                 type="text"

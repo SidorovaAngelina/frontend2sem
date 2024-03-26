@@ -29,13 +29,13 @@ export default App;
 import React,  { useState }  from 'react';
 import './App.css';
 import CharacterInfo from './for2lab';
-import InputComponent from './for3lab'
+import InputComponent from './for3lab';
+import CharacterList from "./for4lab";
 
 function App(){
     return(
         <div className="App">
-            <InputComponent/>
-            <CharacterInfo/>
+            <CharacterList/>
         </div>
     );
 }
