@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Container, FormControl } from "react-bootstrap";
+import { Card, Container, FormControl, Form, Button } from "react-bootstrap";
 
 function CharacterList (){
     const characterData = [
@@ -40,37 +40,64 @@ function CharacterList (){
         },
     ];
     
+    const uniqueNovels = [
+        ...new Set(characterData.map((character) => character.novel))
+    ];
     
     const [searchTerm, setSearchTerm] = useState ('');
+    const [selectedNovel, setSelectedNovel] = useState('');
+    const [showFilters, setShowFilters] = useState(false);
     
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
     
+    const handleSelectNovel = (event) => {
+        setSelectedNovel(event.target.value);
+    };
+
+    const toggleFilters = () => {
+        setShowFilters(!showFilters);
+    };
+
     return (
         <Container style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
-        <FormControl
-        size="lg"
-        type="text"
-        placeholder="Поиск персонажа"
-        className="mt-4 mb-4 text-success"
-        onChange={handleChange}
-        />
+            <Container style={{display: "flex", alignItems: "center", justifyContent: "space-around", margin: "auto", maxWidth: "100%"}}>
+            <FormControl
+            size="lg"
+            type="text"
+            placeholder="Поиск персонажа"
+            className="mt-4 mb-4 text-success"
+            onChange={handleChange}
+            />
+            <Button onClick={toggleFilters} className="ms-2 bg-secondary">
+              Фильтрация по произведениям
+            </Button>
+            </Container>
         
-        {characterData.filter((character) => character.name.toLowerCase().includes(searchTerm.toLowerCase())).map((character, index) => (
+        {showFilters && (
+          <Form.Select className="mt-2 mb-2" onChange={handleSelectNovel}>
+            <option value="">Все произведения из нашей библиотеки</option>
+            {uniqueNovels.map((novel) => (
+              <option key={novel}>{novel}</option>
+            ))}
+          </Form.Select>
+      )}
+        {characterData.filter((character) => character.name.toLowerCase().includes(searchTerm.toLowerCase())&&
+            (!showFilters || ((!selectedNovel || character.novel === selectedNovel))))
+            .map((character, index) => (
           <Card
             key={index}
-            className="m-3 bg-success"
+            className="m-3"
             style={{
+            background: '#6e083e',
               width: "15rem",
               height: "20rem",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
-
-            }}
-          >
+              justifyContent: "center"
+            }}>
             <div>
               <Card.Img variant="top" src={character.image}/>
             </div>
