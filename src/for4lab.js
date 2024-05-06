@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Container, FormControl, Form, Button } from "react-bootstrap";
 
 function CharacterList (){
@@ -44,9 +44,23 @@ function CharacterList (){
         ...new Set(characterData.map((character) => character.novel))
     ];
     
-    const [searchTerm, setSearchTerm] = useState ('');
-    const [selectedNovel, setSelectedNovel] = useState('');
+    const [searchTerm, setSearchTerm] = useState (() => {
+        const storedSearchTerm = localStorage.getItem('searchTerm');
+        return storedSearchTerm || '';
+    });
+    
+    const [selectedNovel, setSelectedNovel] = useState(() => {
+        const storedSelectedNovel = localStorage.getItem('selectedNovel');
+        return storedSelectedNovel || '';
+    });
+    
     const [showFilters, setShowFilters] = useState(false);
+    
+    useEffect(() => {
+        localStorage.setItem('searchTerm', searchTerm);
+        localStorage.setItem('selectedNovel', selectedNovel);
+    }, [searchTerm, selectedNovel]);
+    
     
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
